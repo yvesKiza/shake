@@ -68,11 +68,16 @@ class ShakeDetector {
         if (mShakeTimestamp + shakeCountResetTime < now) {
           mShakeCount = 0;
         }
+        else{
+            mShakeCount++;
+        }
 
         mShakeTimestamp = now;
-        mShakeCount++;
+      
+        if(mShakeCount>0){
 
         onPhoneShake();
+        }
       }
     });
   }
