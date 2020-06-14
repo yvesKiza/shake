@@ -63,7 +63,7 @@ class ShakeDetector {
         if (mShakeTimestamp + shakeSlopTimeMS > now) {
           return;
         }
-          mShakeCount++;
+        
 
 
         // reset the shake count after 3 seconds of no shakes
@@ -73,6 +73,10 @@ class ShakeDetector {
           print("shaketimestamp :"+mShakeTimestamp.toString());
           print("shakecountrest :"+shakeCountResetTime.toString());
           print("now :"+now.toString());
+          
+        }
+        else{
+            print("no resetttttttttttttttt"); 
         }
        
 
