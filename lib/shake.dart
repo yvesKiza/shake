@@ -70,9 +70,9 @@ class ShakeDetector {
         if (mShakeTimestamp + shakeCountResetTime < now) {
           mShakeCount = 0;
          print("resrt-----------------------------");
-          print("shaketimestamp :"+mShakeTimestamp);
-          print("shakecountrest :"+shakeCountResetTime);
-          print("now :"+now);
+          print("shaketimestamp :"+mShakeTimestamp.toString());
+          print("shakecountrest :"+shakeCountResetTime.toString());
+          print("now :"+now.toString());
         }
        
 
