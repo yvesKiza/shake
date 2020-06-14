@@ -85,7 +85,7 @@ class ShakeDetector {
         reset=true;
         
       }
-      else  if (mShakeTimestamp + 3000 > now && reset==true ) {
+      else  if (mShakeTimestamp + shakeCountResetTime < now && reset==true ) {
         
          mShakeTimestamp = DateTime.now().millisecondsSinceEpoch;
         reset=false;
