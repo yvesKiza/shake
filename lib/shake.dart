@@ -75,9 +75,7 @@ class ShakeDetector {
           print("now :"+now.toString());
           
         }
-        else{
-            print("no resetttttttttttttttt"); 
-        }
+        
        
 
         mShakeTimestamp = now;
@@ -87,6 +85,9 @@ class ShakeDetector {
         onPhoneShake();
         
       }
+      else{
+            print("no resetttttttttttttttt"); 
+        }
     });
   }
 
