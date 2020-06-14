@@ -69,15 +69,16 @@ class ShakeDetector {
         // reset the shake count after 3 seconds of no shakes
         if (mShakeTimestamp + shakeCountResetTime < now) {
           mShakeCount = 0;
+          return;
         }
        
 
         mShakeTimestamp = now;
       
-        if(mShakeCount!=0){
+     
 
         onPhoneShake();
-        }
+        
       }
     });
   }
