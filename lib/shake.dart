@@ -63,7 +63,7 @@ class ShakeDetector {
        var   now = DateTime.now().millisecondsSinceEpoch;
         // ignore shake events too close to each other (500ms)
         if (mShakeTimestamp + shakeSlopTimeMS > now) {
-          reset=false;
+         
           return;
         }
         
@@ -80,13 +80,14 @@ class ShakeDetector {
 
         mShakeTimestamp = now;
          resetTime=now;
-     
+         
 
         onPhoneShake();
-        reset=true;
+         reset=true;
+     
         
       }
-      else  if (resetTime + shakeCountResetTime > mShakeTimestamp && reset==true ) {
+      else  if (resetTime + shakeCountResetTime < DateTime.now().millisecondsSinceEpoch && reset==true ) {
         
        
         mShakeTimestamp=DateTime.now().millisecondsSinceEpoch;
