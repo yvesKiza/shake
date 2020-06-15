@@ -22,7 +22,7 @@ class ShakeDetector {
   final int shakeCountResetTime;
    
   int mShakeTimestamp = DateTime.now().millisecondsSinceEpoch;
-  int lastSensorTime=DateTime.now().millisecondsSinceEpoch;
+  int lastSensorTime=DateTime.now();
 
 
   /// StreamSubscription for Accelerometer events
@@ -59,17 +59,17 @@ class ShakeDetector {
       double gForce = sqrt(gX * gX + gY * gY + gZ * gZ);
 
       if (gForce > shakeThresholdGravity) {
-       var   now = DateTime.now().millisecondsSinceEpoch;
+       var   now = DateTime.now();
        
-        if(lastSensorTime < (now-shakeSlopTimeMS)){
-          var dif= (now-shakeSlopTimeMS)-lastSensorTime;
-          print("diffetrec "+dif.toString());
+        if(lastSensorTime.sec < (now.sec-shakeSlopTimeMS)){
+          var dif= (now.sec-shakeSlopTimeMS)-lastSensorTime.sec;
+          print("diffetrec less "+dif.toString());
           lastSensorTime=now;
           return;
         }
-        else if(lastSensorTime > (now-shakeSlopTimeMS)){
-           var dif= (now-shakeSlopTimeMS)-lastSensorTime;
-          print("diffetrec "+ dif.toString());
+        else if(lastSensorTime.sec > (now.sec-shakeSlopTimeMS)){
+           var dif= (now.sec-shakeSlopTimeMS)-lastSensorTime.sec;
+          print("diffetrec  greater"+ dif.toString());
           return;
         }
           
