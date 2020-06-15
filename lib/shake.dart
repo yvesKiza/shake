@@ -22,7 +22,8 @@ class ShakeDetector {
   final int shakeCountResetTime;
    
   int mShakeTimestamp = DateTime.now().millisecondsSinceEpoch;
-  int resetTime=DateTime.now().millisecondsSinceEpoch;
+  int lastShakeTime=DateTime.now().millisecondsSinceEpoch;
+  int lastRestTime=DateTime.now().millisecondsSinceEpoch;
   int mShakeCount = 0;
   bool reset=false;
 
@@ -63,9 +64,13 @@ class ShakeDetector {
        var   now = DateTime.now().millisecondsSinceEpoch;
         // ignore shake events too close to each other (500ms)
         if (mShakeTimestamp + shakeSlopTimeMS > now) {
-         
+         return;
+          
+        }
+        if(lastShakeTime+shakeCountResetTime<DateTime.now().millisecondsSinceEpoch){
           return;
         }
+
         
 
 
@@ -79,7 +84,7 @@ class ShakeDetector {
        
 
         mShakeTimestamp = now;
-         resetTime=now;
+        lastShakeTime=now;
          
 
         onPhoneShake();
@@ -87,10 +92,11 @@ class ShakeDetector {
      
         
       }
-      else  if ((resetTime + shakeCountResetTime < DateTime.now().millisecondsSinceEpoch)  ) {
+      else  if ((lastShakeTime + shakeCountResetTime < DateTime.now().millisecondsSinceEpoch) 
+               && reset==true) {
         
-       
-        mShakeTimestamp=DateTime.now().millisecondsSinceEpoch;
+        var now=DateTime.now().millisecondsSinceEpoch
+        lastResetTime=now;
         reset=false;
         print("reset");
         }
