@@ -64,6 +64,7 @@ class ShakeDetector {
        var   now = DateTime.now().millisecondsSinceEpoch;
         // ignore shake events too close to each other (500ms)
         if (mShakeTimestamp + shakeSlopTimeMS > now) {
+          reset=true;
          return;
           
         }
