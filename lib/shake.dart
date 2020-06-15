@@ -22,10 +22,8 @@ class ShakeDetector {
   final int shakeCountResetTime;
    
   int mShakeTimestamp = DateTime.now().millisecondsSinceEpoch;
-  int lastShakeTime=DateTime.now().millisecondsSinceEpoch;
-  int lastResetTime=DateTime.now().millisecondsSinceEpoch;
-  int mShakeCount = 0;
-  bool reset=false;
+  int lastSensorTime=DateTime.now().millisecondsSinceEpoch;
+
 
   /// StreamSubscription for Accelerometer events
   StreamSubscription streamSubscription;
@@ -62,46 +60,33 @@ class ShakeDetector {
 
       if (gForce > shakeThresholdGravity) {
        var   now = DateTime.now().millisecondsSinceEpoch;
-        // ignore shake events too close to each other (500ms)
-        if (mShakeTimestamp + shakeSlopTimeMS > now) {
-          reset=true;
-         return;
-          
-        }
-        if(lastResetTime + shakeSlopTimeMS > now){
-          print("yes");
+       
+        if(lastSensorTime < (now-shakeSlopTimeMS)){
+          var dif= (now-shakeSlopTimeMS)-lastSensorTime;
+          print("diffetrec "+dif.toString())
+          lastSensorTime=now;
           return;
         }
-
-        
-
-
-        // reset the shake count after 3 seconds of no shakes
-        if (mShakeTimestamp + shakeCountResetTime < now) {
-          mShakeCount = 0;
-          print("set");
-          
+        else if(lastSensorTime > (now-shakeSlopTimeMS)){
+           var dif= (now-shakeSlopTimeMS)-lastSensorTime;
+          print("diffetrec "+ dif.toString())
+          return;
         }
-        
+          
+
+       
        
 
-        mShakeTimestamp = now;
-        lastShakeTime=now;
+         lastSensorTime=now;
+
          
 
         onPhoneShake();
-         reset=true;
+     
      
         
       }
-      else  if ((lastShakeTime + shakeCountResetTime < DateTime.now().millisecondsSinceEpoch) 
-               && reset==true) {
-        
-        var now=DateTime.now().millisecondsSinceEpoch;
-        lastResetTime=now;
-        reset=false;
-        print("reset");
-        }
+     
     });
   }
 
