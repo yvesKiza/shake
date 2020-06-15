@@ -78,10 +78,10 @@ class ShakeDetector {
 
        
        
-
+   
          lastSensorTime=now;
 
-         
+         print("yes");
 
         onPhoneShake();
      
