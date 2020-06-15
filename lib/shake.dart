@@ -63,13 +63,13 @@ class ShakeDetector {
        
         if(lastSensorTime < (now-shakeSlopTimeMS)){
           var dif= (now-shakeSlopTimeMS)-lastSensorTime;
-          print("diffetrec "+dif.toString())
+          print("diffetrec "+dif.toString());
           lastSensorTime=now;
           return;
         }
         else if(lastSensorTime > (now-shakeSlopTimeMS)){
            var dif= (now-shakeSlopTimeMS)-lastSensorTime;
-          print("diffetrec "+ dif.toString())
+          print("diffetrec "+ dif.toString());
           return;
         }
           
