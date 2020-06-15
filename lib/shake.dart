@@ -23,7 +23,7 @@ class ShakeDetector {
   final int shakeCountResetTime;
    
   int mShakeTimestamp = DateTime.now().millisecondsSinceEpoch;
-  int lastSensorTime=DateTime.now();
+  DateTime lastSensorTime=DateTime.now();
 
 
   /// StreamSubscription for Accelerometer events
