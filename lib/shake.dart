@@ -1,6 +1,7 @@
 library shake;
 
 import 'dart:async';
+import 'dart:core';
 import 'dart:math';
 import 'package:sensors/sensors.dart';
 
