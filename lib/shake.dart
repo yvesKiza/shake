@@ -68,7 +68,7 @@ class ShakeDetector {
           lastSensorTime=now;
           return;
         }
-       else if(now.subtract(new Duration(seconds:shakeSlopTimeMS )).isbefore(lastSensorTime)){
+       else if(now.subtract(new Duration(seconds:shakeSlopTimeMS )).isBefore(lastSensorTime)){
           var dif= (now.subtract(new Duration(seconds:shakeSlopTimeMS )).difference(lastSensorTime));
           print("diffetrec greeat "+dif.inSeconds.toString());
           
