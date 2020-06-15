@@ -62,15 +62,16 @@ class ShakeDetector {
       if (gForce > shakeThresholdGravity) {
        var   now = DateTime.now();
        
-        if(lastSensorTime.sec < (now.sec-shakeSlopTimeMS)){
-          var dif= (now.sec-shakeSlopTimeMS)-lastSensorTime.sec;
-          print("diffetrec less "+dif.toString());
+        if(now.subtract(new Duration(seconds:shakeSlopTimeMS )).isAfter(lastSensorTime)){
+          var dif= (now.subtract(new Duration(seconds:shakeSlopTimeMS )).difference(lastSensorTime));
+          print("diffetrec less "+dif.inSeconds.toString());
           lastSensorTime=now;
           return;
         }
-        else if(lastSensorTime.sec > (now.sec-shakeSlopTimeMS)){
-           var dif= (now.sec-shakeSlopTimeMS)-lastSensorTime.sec;
-          print("diffetrec  greater"+ dif.toString());
+       else if(now.subtract(new Duration(seconds:shakeSlopTimeMS )).isbefore(lastSensorTime)){
+          var dif= (now.subtract(new Duration(seconds:shakeSlopTimeMS )).difference(lastSensorTime));
+          print("diffetrec greeat "+dif.inSeconds.toString());
+          
           return;
         }
           
