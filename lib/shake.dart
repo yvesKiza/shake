@@ -67,7 +67,7 @@ class ShakeDetector {
          return;
           
         }
-        if(lastShakeTime+shakeCountResetTime<DateTime.now().millisecondsSinceEpoch){
+        if(lastShakeTime+shakeSlopTimeMS<DateTime.now().millisecondsSinceEpoch){
           return;
         }
 
