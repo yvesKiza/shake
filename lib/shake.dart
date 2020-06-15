@@ -23,7 +23,7 @@ class ShakeDetector {
    
   int mShakeTimestamp = DateTime.now().millisecondsSinceEpoch;
   int lastShakeTime=DateTime.now().millisecondsSinceEpoch;
-  int lastRestTime=DateTime.now().millisecondsSinceEpoch;
+  int lastResetTime=DateTime.now().millisecondsSinceEpoch;
   int mShakeCount = 0;
   bool reset=false;
 
@@ -67,7 +67,7 @@ class ShakeDetector {
          return;
           
         }
-        if(lastShakeTime + shakeSlopTimeMS > now){
+        if(lastResetTime + shakeSlopTimeMS > now){
           print("yes");
           return;
         }
@@ -96,7 +96,7 @@ class ShakeDetector {
       else  if ((lastShakeTime + shakeCountResetTime < DateTime.now().millisecondsSinceEpoch) 
                && reset==true) {
         
-        var now=DateTime.now().millisecondsSinceEpoch
+        var now=DateTime.now().millisecondsSinceEpoch;
         lastResetTime=now;
         reset=false;
         print("reset");
