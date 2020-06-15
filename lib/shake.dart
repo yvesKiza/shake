@@ -64,14 +64,14 @@ class ShakeDetector {
        
         if(now.subtract(new Duration(seconds:shakeSlopTimeMS )).difference(lastSensorTime).inSeconds < 0){
           var dif= (now.subtract(new Duration(seconds:shakeSlopTimeMS )).difference(lastSensorTime));
-          print("diffetrec less "+dif.inSeconds.toString());
-          lastSensorTime=now;
+          print("diffetrec gr "+dif.inSeconds.toString());
+        
           return;
         }
        else if(now.subtract(new Duration(seconds:shakeSlopTimeMS )).difference(lastSensorTime).inSeconds > 0){
           var dif= (now.subtract(new Duration(seconds:shakeSlopTimeMS )).difference(lastSensorTime));
-          print("diffetrec greeat "+dif.inSeconds.toString());
-          
+          print("diffetrec less "+dif.inSeconds.toString());
+           lastSensorTime=now;
           return;
         }
           
