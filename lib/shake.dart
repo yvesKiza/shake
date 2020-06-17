@@ -61,16 +61,14 @@ class ShakeDetector {
 
       if (gForce > shakeThresholdGravity) {
        var   now = DateTime.now();
-       
-        if(now.subtract(new Duration(seconds:shakeSlopTimeMS )).difference(lastSensorTime).inSeconds < 0){
-          var dif= (now.subtract(new Duration(seconds:shakeSlopTimeMS )).difference(lastSensorTime));
-          print("diffetrec gr "+dif.inSeconds.toString());
+       var diff=now.subtract(new Duration(seconds:shakeSlopTimeMS )).difference(lastSensorTime).inSeconds;
+        if( diff < 0){
+         
         
           return;
         }
-       else if(now.subtract(new Duration(seconds:shakeSlopTimeMS )).difference(lastSensorTime).inSeconds > 0){
-          var dif= (now.subtract(new Duration(seconds:shakeSlopTimeMS )).difference(lastSensorTime));
-          print("diffetrec less "+dif.inSeconds.toString());
+       else if( diff > 0){
+        
            lastSensorTime=now;
           return;
         }
@@ -81,7 +79,7 @@ class ShakeDetector {
    
          lastSensorTime=now;
 
-         print("yes");
+      
 
         onPhoneShake();
      
