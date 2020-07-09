@@ -97,7 +97,7 @@ class ShakeDetector {
     }
   }
   
-   bool get isListening{
+   bool  isListening (){
      if(streamSubscription==null){
        return true;
    }
