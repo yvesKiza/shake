@@ -103,5 +103,6 @@ class ShakeDetector {
    }
      else 
        return false;
+   }
   
 }
