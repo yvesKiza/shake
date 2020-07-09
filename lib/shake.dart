@@ -96,4 +96,9 @@ class ShakeDetector {
       streamSubscription.cancel();
     }
   }
+  
+   bool get isListening{
+     return streamSubscription!=null;
+   }
+  
 }
