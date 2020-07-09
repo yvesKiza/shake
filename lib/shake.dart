@@ -97,12 +97,5 @@ class ShakeDetector {
     }
   }
   
-   bool  isListening (){
-     if(streamSubscription==null){
-       return true;
-   }
-     else 
-       return false;
-   }
   
 }
